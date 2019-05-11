@@ -13,11 +13,8 @@ class LocationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        include __DIR__.'/Database/Seeds/CitiesTableSeeder.php';
-        include __DIR__.'/Database/Seeds/CountriesTableSeeder.php';
-        include __DIR__.'/Database/Seeds/StatesTableSeeder.php';
-        include __DIR__.'/Database/Seeds/LocationSeeder.php';
         $this->app->make('Ichtrojan\Location\Http\Controllers\LocationController');
+        $this->registerPublishableResources();
     }
 
     /**
@@ -29,5 +26,23 @@ class LocationServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__.'/routes/web.php');
         $this->loadMigrationsFrom(__DIR__.'/Database/migrations');
+    }
+
+    /**
+     * Register the publishable files.
+     */
+    private function registerPublishableResources()
+    {
+        $publishablePath = dirname(__DIR__).'/publishable';
+
+        $publishable = [
+            'seeds' => [
+                "{$publishablePath}/database/seeds/" => database_path('seeds'),
+            ]
+        ];
+
+        foreach ($publishable as $group => $paths) {
+            $this->publishes($paths, $group);
+        }
     }
 }
