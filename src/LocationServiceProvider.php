@@ -13,6 +13,10 @@ class LocationServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        include __DIR__.'/Database/Seeds/CitiesTableSeeder.php';
+        include __DIR__.'/Database/Seeds/CountriesTableSeeder.php';
+        include __DIR__.'/Database/Seeds/StatesTableSeeder.php';
+        include __DIR__.'/Database/Seeds/LocationSeeder.php';
         $this->app->make('Ichtrojan\Location\Http\Controllers\LocationController');
     }
 
