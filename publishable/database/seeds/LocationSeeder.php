@@ -1,9 +1,13 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Ichtrojan\Location\Traits\Seedable;
 
 class LocationSeeder extends Seeder
 {
+    use Seedable;
+
+    protected $seedersPath = __DIR__.'/';
     /**
      * Seed the application's database.
      *
