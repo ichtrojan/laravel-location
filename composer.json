@@ -17,7 +17,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ichtrojan\\location\\LocationServiceProvider"
+                "Ichtrojan\\Location\\LocationServiceProvider"
             ]
         }
     },
