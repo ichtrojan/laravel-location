@@ -13,7 +13,7 @@ class LocationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->make('ichtrojan\location\LocationController');
+        $this->app->make('ichtrojan\location\Http\Controllers\LocationController');
     }
 
     /**
@@ -23,7 +23,7 @@ class LocationServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__.'/routes.php');
-        $this->loadMigrationsFrom(__DIR__.'/migrations');
+        $this->loadRoutesFrom(__DIR__.'/routes/web.php');
+        $this->loadMigrationsFrom(__DIR__.'/Database/migrations');
     }
 }

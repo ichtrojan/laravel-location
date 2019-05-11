@@ -1,6 +1,6 @@
 <?php
 
-namespace Ichtrojan\Location;
+namespace Ichtrojan\Location\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

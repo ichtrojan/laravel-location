@@ -1,9 +1,9 @@
 <?php
-namespace Ichtrojan\Location;
+namespace Ichtrojan\Location\Http\Controllers;
 
-use Ichtrojan\Location\City;
-use Ichtrojan\Location\State;
-use Ichtrojan\Location\Country;
+use Ichtrojan\Location\Models\City;
+use Ichtrojan\Location\Models\State;
+use Ichtrojan\Location\Models\Country;
 use App\Http\Controllers\Controller;
 
 class LocationController extends Controller
