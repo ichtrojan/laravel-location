@@ -36,7 +36,7 @@ class LocationServiceProvider extends ServiceProvider
         $publishablePath = dirname(__DIR__).'/publishable';
 
         $publishable = [
-            'seeds' => [
+            'laravel-location-seeds' => [
                 "{$publishablePath}/database/seeds/" => database_path('seeds'),
             ]
         ];
