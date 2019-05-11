@@ -1,6 +1,6 @@
 <?php
 
-Route::grouo(['prefix' => 'location'], function () {
+Route::group(['prefix' => 'location', 'namespace' => 'Ichtrojan\Location\Http\Controllers'], function () {
     # Get all Countries
     Route::get('countries', 'LocationController@getCountries');
 
