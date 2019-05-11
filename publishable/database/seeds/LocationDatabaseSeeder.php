@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class LocationSeeder extends Seeder
+class LocationDatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
