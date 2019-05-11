@@ -13,7 +13,7 @@ class LocationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->make('ichtrojan\location\Http\Controllers\LocationController');
+        $this->app->make('Ichtrojan\Location\Http\Controllers\LocationController');
     }
 
     /**
