@@ -4,7 +4,6 @@ namespace Ichtrojan\Location\Http\Controllers;
 use Ichtrojan\Location\Models\City;
 use Ichtrojan\Location\Models\State;
 use Ichtrojan\Location\Models\Country;
-use App\Http\Controllers\Controller;
 
 class LocationController extends Controller
 {
