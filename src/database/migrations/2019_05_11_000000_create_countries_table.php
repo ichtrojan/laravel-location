@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -13,7 +14,8 @@ class CreateCountriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('countries', function (Blueprint $table) {
+        $countriesTable = Config::get('laravel_location.countries_table', 'countries');
+        Schema::create($countriesTable, function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('code');
             $table->string('name');

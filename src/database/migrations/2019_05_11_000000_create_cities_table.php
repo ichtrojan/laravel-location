@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -13,7 +14,8 @@ class CreateCitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cities', function (Blueprint $table) {
+        $citiesTable = Config::get('laravel_location.cities_table', 'cities');
+        Schema::create($citiesTable, function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('name');
             $table->integer('state_id');
