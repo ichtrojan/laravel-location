@@ -14,13 +14,17 @@ class CreateStatesTable extends Migration
      */
     public function up()
     {
-        $statesTable = Config::get('laravel_location.states_table', 'states');
-        Schema::create($statesTable, function (Blueprint $table) {
+        Schema::create($this->getTableName(), function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('name');
             $table->integer('country_id');
             $table->timestamps();
         });
+    }
+
+    protected function getTableName()
+    {
+        return Config::get('laravel-location.states_table');
     }
 
     /**
@@ -30,6 +34,6 @@ class CreateStatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('states');
+        Schema::dropIfExists($this->getTableName());
     }
 }

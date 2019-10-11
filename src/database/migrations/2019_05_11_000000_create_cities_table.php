@@ -14,13 +14,17 @@ class CreateCitiesTable extends Migration
      */
     public function up()
     {
-        $citiesTable = Config::get('laravel_location.cities_table', 'cities');
-        Schema::create($citiesTable, function (Blueprint $table) {
+        Schema::create($this->getTableName(), function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('name');
             $table->integer('state_id');
             $table->timestamps();
         });
+    }
+
+    protected function getTableName()
+    {
+        return Config::get('laravel-location.cities_table');
     }
 
     /**
@@ -30,6 +34,6 @@ class CreateCitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists($this->getTableName());
     }
 }

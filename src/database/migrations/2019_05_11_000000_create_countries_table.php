@@ -14,14 +14,18 @@ class CreateCountriesTable extends Migration
      */
     public function up()
     {
-        $countriesTable = Config::get('laravel_location.countries_table', 'countries');
-        Schema::create($countriesTable, function (Blueprint $table) {
+        Schema::create($this->getTableName(), function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('code');
             $table->string('name');
             $table->integer('phonecode');
             $table->timestamps();
         });
+    }
+
+    protected function getTableName()
+    {
+        return Config::get('laravel-location.countries_table');
     }
 
     /**
@@ -31,6 +35,6 @@ class CreateCountriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('countries');
+        Schema::dropIfExists($this->getTableName());
     }
 }
