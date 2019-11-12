@@ -38,6 +38,9 @@ class LocationServiceProvider extends ServiceProvider
         $publishable = [
             'laravel-location-seeds' => [
                 "{$publishablePath}/database/seeds/" => database_path('seeds'),
+            ],
+            'laravel-location-config' => [
+                "{$publishablePath}/config/" => base_path('config'),
             ]
         ];
 

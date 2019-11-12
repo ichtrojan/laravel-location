@@ -7,13 +7,29 @@ use Illuminate\Database\Migrations\Migration;
 class CreateStatesTable extends Migration
 {
     /**
+     * Table name
+     *
+     * @var string
+     */
+    public $tbName;
+
+    /**
+     * Constructor
+     *
+     * @return void
+     */
+    public function __construct() {
+        $this->tbName = config('location.table.states');
+    }
+
+    /**
      * Run the migrations.
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('states', function (Blueprint $table) {
+        Schema::create($this->tbName, function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('name');
             $table->integer('country_id');
@@ -28,6 +44,6 @@ class CreateStatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('states');
+        Schema::dropIfExists($this->tbName);
     }
 }

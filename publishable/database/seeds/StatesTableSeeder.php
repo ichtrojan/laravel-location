@@ -11,7 +11,9 @@ class StatesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('states')->delete();
+        $tbName = config('location.table.states');
+
+        DB::table($tbName)->delete();
 
         $states = array(
             array('name' => "Andaman and Nicobar Islands",'country_id' => 101),
@@ -4137,6 +4139,6 @@ class StatesTableSeeder extends Seeder
             array('name' => "Midlands",'country_id' => 246)
         );
 
-        DB::table('states')->insert($states);
+        DB::table($tbName)->insert($states);
     }
 }

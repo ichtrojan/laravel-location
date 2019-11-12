@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Country extends Model
 {
-    protected $table = 'countries';
+    protected $table;
+
+    public function __construct() {
+        $this->table = config('location.table.countries');
+    }
 }

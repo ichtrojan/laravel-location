@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class State extends Model
 {
-    protected $table = 'states';
+    protected $table;
+
+    public function __construct() {
+        $this->table = config('location.table.states');
+    }
 }

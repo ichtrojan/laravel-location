@@ -7,13 +7,29 @@ use Illuminate\Database\Migrations\Migration;
 class CreateCountriesTable extends Migration
 {
     /**
+     * Table name
+     *
+     * @var string
+     */
+    public $tbName;
+
+    /**
+     * Constructor
+     *
+     * @return void
+     */
+    public function __construct() {
+        $this->tbName = config('location.table.countries');
+    }
+
+    /**
      * Run the migrations.
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('countries', function (Blueprint $table) {
+        Schema::create($this->tbName, function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('code');
             $table->string('name');
@@ -29,6 +45,6 @@ class CreateCountriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('countries');
+        Schema::dropIfExists($this->tbName);
     }
 }

@@ -7,13 +7,29 @@ use Illuminate\Database\Migrations\Migration;
 class CreateCitiesTable extends Migration
 {
     /**
+     * Table name
+     *
+     * @var string
+     */
+    public $tbName;
+
+    /**
+     * Constructor
+     *
+     * @return void
+     */
+    public function __construct() {
+        $this->tbName = config('location.table.cities');
+    }
+
+    /**
      * Run the migrations.
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create($this->tbName, function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('name');
             $table->integer('state_id');
@@ -28,6 +44,6 @@ class CreateCitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists($this->tbName);
     }
 }

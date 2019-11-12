@@ -11,7 +11,9 @@ class CountriesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('countries')->delete();
+        $tbName = config('location.table.countries');
+
+        DB::table($tbName)->delete();
 
         $countries = array(
             array('id' => 1,'code' => 'AF' ,'name' => "Afghanistan",'phonecode' => 93),
@@ -262,6 +264,6 @@ class CountriesTableSeeder extends Seeder
             array('id' => 246,'code' => 'ZW','name' => "Zimbabwe",'phonecode' => 263),
         );
 
-        DB::table('countries')->insert($countries);
+        DB::table($tbName)->insert($countries);
     }
 }
