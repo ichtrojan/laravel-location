@@ -48398,6 +48398,6 @@ class CitiesTableSeeder extends Seeder
             array('name' => "Summersville",'state_id' => 3976),
         );
 
-        DB::table($citiesTable)->insert($cities8);
+        DB::table($citiesTable)->insert($cities);
     }
 }
