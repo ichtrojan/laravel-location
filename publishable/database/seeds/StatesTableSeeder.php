@@ -11,7 +11,7 @@ class StatesTableSeeder extends Seeder
      */
     public function run()
     {
-        $statesTable =   $citiesTable = config('laravel-location.states_table', 'states');
+        $statesTable  = config('laravel-location.states_table', 'states');
         DB::table($statesTable)->truncate();
 
         $states = array(
