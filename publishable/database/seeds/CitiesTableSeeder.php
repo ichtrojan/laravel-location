@@ -12,7 +12,7 @@ class CitiesTableSeeder extends Seeder
     public function run()
     {
         $citiesTable = config('laravel-location.cities_table', 'cities');
-        DB::table($citiesTable)->delete();
+        DB::table($citiesTable)->truncate();
 
         $cities = array(
             array('name' => "Bombuflat",'state_id' => 1),
