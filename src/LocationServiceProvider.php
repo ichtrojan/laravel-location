@@ -14,7 +14,8 @@ class LocationServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->make('Ichtrojan\Location\Http\Controllers\LocationController');
-        $this->registerPublishableResources();
+
+        $this->mergeConfigFrom(__DIR__ . "/../publishable/config/laravel-location.php", 'laravel-location');
     }
 
     /**
@@ -26,6 +27,12 @@ class LocationServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__.'/routes/web.php');
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+
+        if ($this->app->runningInConsole()) {
+            $this->publishMigrations();
+            $this->publishConfigs();
+            $this->registerPublishableResources();
+        }
     }
 
     /**
@@ -44,5 +51,21 @@ class LocationServiceProvider extends ServiceProvider
         foreach ($publishable as $group => $paths) {
             $this->publishes($paths, $group);
         }
+    }
+
+    protected function publishMigrations()
+    {
+        $this->publishes([
+            __DIR__ . "/database/migrations/2019_05_11_000000_create_cities_table.php" => database_path('migrations/' . date("Y_m_d_His", time()) . '_create_cities_table.php'),
+            __DIR__ . "/database/migrations/2019_05_11_000000_create_countries_table.php" => database_path('migrations/' . date("Y_m_d_His", time()) . '_create_countries_table.php'),
+            __DIR__ . "/database/migrations/2019_05_11_000000_create_states_table.php" => database_path('migrations/' . date("Y_m_d_His", time()) . '_create_states_table.php')
+        ], 'laravel-location-migrations');
+    }
+
+    protected function publishConfigs()
+    {
+        $this->publishes([
+            __DIR__ . "/../publishable/config/laravel-location.php" => config_path('laravel-location.php'),
+        ], 'laravel-location-config');
     }
 }

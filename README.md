@@ -5,9 +5,7 @@
 ## Introduction 🖖
 This Package offers a simple way to get Countries, Cities and States that you may need for your Application, most especially for dropdown menus.
 
-## Installation 💽
-
-### Step One 
+### Step One - Installation
 
 Require the package via composer into your project
 
@@ -17,7 +15,24 @@ composer require ichtrojan/laravel-location
 
 ![composer install](https://res.cloudinary.com/ichtrojan/image/upload/v1557601533/Screenshot_2019-05-11_at_8.04.49_PM_ojixaa.png)
 
-### Step Two 
+### Step Two - Publishing Configurations
+Laravel location provides you with an easy way of customizing the tables used for storing Countries, States and Cities. To customize this you need to publish the 
+configuration file and edit the table names. To publish the configuration files, run:
+
+`php artisan vendor:publish --tag=laravel-location-config`
+
+You will have `config/laravel-location.php` available for you to edit. Te default content of the configuration is like so:
+```php
+<?php
+    return [
+        'countries_table' => 'countries',
+        'cities_table' => 'cities',
+        'states_table' => 'states',
+    ];
+```
+You can go ahead and customize the Table names as you need before running the Migration.
+
+### Step Three - Publishing Seeds
 
 Next, publish the Seeders from the package
 
@@ -39,9 +54,7 @@ input the number that matches with `Ichtrojan\Location\LocationServiceProvider` 
 
 ![vendor published](https://res.cloudinary.com/ichtrojan/image/upload/v1557611069/Screenshot_2019-05-11_at_10.44.15_PM_e3os9s.png)
 
-Step Three
-
-Run migrations
+### Step Four - Running Migrations
 
 > before you do this make sure your correct Database credentials are set in the `.env` file
 
@@ -76,4 +89,4 @@ php artisan db:seed --class=LocationDatabaseSeeder
 
 Free for all, if you find an issue with the package or if a group of people somehow created a new country please send in a PR.
 
-Danke Schön 
+Danke Schön

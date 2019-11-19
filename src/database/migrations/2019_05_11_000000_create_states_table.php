@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -13,12 +14,17 @@ class CreateStatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('states', function (Blueprint $table) {
+        Schema::create($this->getTableName(), function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('name');
             $table->integer('country_id');
             $table->timestamps();
         });
+    }
+
+    protected function getTableName()
+    {
+        return Config::get('laravel-location.states_table');
     }
 
     /**
@@ -28,6 +34,6 @@ class CreateStatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('states');
+        Schema::dropIfExists($this->getTableName());
     }
 }

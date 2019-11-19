@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -13,13 +14,18 @@ class CreateCountriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('countries', function (Blueprint $table) {
+        Schema::create($this->getTableName(), function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('code');
             $table->string('name');
             $table->integer('phonecode');
             $table->timestamps();
         });
+    }
+
+    protected function getTableName()
+    {
+        return Config::get('laravel-location.countries_table');
     }
 
     /**
@@ -29,6 +35,6 @@ class CreateCountriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('countries');
+        Schema::dropIfExists($this->getTableName());
     }
 }

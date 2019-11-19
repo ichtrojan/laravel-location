@@ -1,26 +1,31 @@
 {
-    "name": "ichtrojan/laravel-location",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Michael Okoh",
-            "email": "michael@okoh.co.uk"
-        }
-    ],
-    "minimum-stability": "dev",
-    "autoload": {
-        "psr-4": {
-            "Ichtrojan\\Location\\": "src/"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Ichtrojan\\Location\\LocationServiceProvider"
-            ]
-        }
-    },
-    "require": {},
-    "description": ""
+	"name": "ichtrojan/laravel-location",
+	"type": "library",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Michael Okoh",
+			"email": "michael@okoh.co.uk"
+		}
+	],
+	"minimum-stability": "dev",
+	"autoload": {
+		"psr-4": {
+			"Ichtrojan\\Location\\": "src/"
+		}
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Ichtrojan\\Location\\LocationServiceProvider"
+			]
+		}
+	},
+	"require": {
+		"illuminate/support": "^5.0|^6.0"
+	},
+	"require-dev": {
+		"orchestra/testbench": "^3.0|^4.0"
+	},
+	"description": ""
 }
