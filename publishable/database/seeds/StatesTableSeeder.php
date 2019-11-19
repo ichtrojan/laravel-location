@@ -12,7 +12,7 @@ class StatesTableSeeder extends Seeder
     public function run()
     {
         $statesTable =   $citiesTable = config('laravel-location.states_table', 'states');
-        DB::table($statesTable)->delete();
+        DB::table($statesTable)->truncate();
 
         $states = array(
             array('name' => "Andaman and Nicobar Islands",'country_id' => 101),
