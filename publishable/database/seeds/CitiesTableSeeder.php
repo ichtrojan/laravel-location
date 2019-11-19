@@ -11,8 +11,8 @@ class CitiesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-        DB::table('cities')->delete();
+        $citiesTable = config('laravel-location.cities_table', 'cities');
+        DB::table($citiesTable)->delete();
 
         $cities = array(
             array('name' => "Bombuflat",'state_id' => 1),
@@ -6018,7 +6018,7 @@ class CitiesTableSeeder extends Seeder
 
         );
 
-        DB::table('cities')->insert($cities);
+        DB::table($citiesTable)->insert($cities);
 
         $cities2 = array(
             array('name' => "Qal'eh-ye Zal",'state_id' => 67),
@@ -12024,7 +12024,7 @@ class CitiesTableSeeder extends Seeder
 
         );
 
-        DB::table('cities')->insert($cities2);
+        DB::table($citiesTable)->insert($cities2);
 
         $cities3 = array(
             array('name' => "Huanren",'state_id' => 755),
@@ -18030,7 +18030,7 @@ class CitiesTableSeeder extends Seeder
 
         );
 
-        DB::table('cities')->insert($cities3);
+        DB::table($citiesTable)->insert($cities3);
 
         $cities4 = array(
             array('name' => "Saint-Gratien",'state_id' => 1305),
@@ -24036,7 +24036,7 @@ class CitiesTableSeeder extends Seeder
 
         );
 
-        DB::table('cities')->insert($cities4);
+        DB::table($citiesTable)->insert($cities4);
 
         $cities5 = array(
 
@@ -30043,7 +30043,7 @@ class CitiesTableSeeder extends Seeder
 
         );
 
-        DB::table('cities')->insert($cities5);
+        DB::table($citiesTable)->insert($cities5);
 
         $cities6 = array(
 
@@ -36071,7 +36071,7 @@ class CitiesTableSeeder extends Seeder
 
         );
 
-        DB::table('cities')->insert($cities6);
+        DB::table($citiesTable)->insert($cities6);
 
         $cities7 = array(
 
@@ -42078,7 +42078,7 @@ class CitiesTableSeeder extends Seeder
 
         );
 
-        DB::table('cities')->insert($cities7);
+        DB::table($citiesTable)->insert($cities7);
 
         $cities8 = array(
 
@@ -48398,6 +48398,6 @@ class CitiesTableSeeder extends Seeder
             array('name' => "Summersville",'state_id' => 3976),
         );
 
-        DB::table('cities')->insert($cities8);
+        DB::table($citiesTable)->insert($cities8);
     }
 }
