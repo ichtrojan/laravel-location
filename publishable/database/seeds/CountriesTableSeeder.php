@@ -12,7 +12,7 @@ class CountriesTableSeeder extends Seeder
     public function run()
     {
         $countriesTable = config('laravel-location.countries_table', 'countries');
-        DB::table($countriesTable)->delete();
+        DB::table($countriesTable)->truncate();
 
         $countries = array(
             array('id' => 1,'code' => 'AF' ,'name' => "Afghanistan",'phonecode' => 93),
