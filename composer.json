@@ -14,6 +14,15 @@
 			"Ichtrojan\\Location\\": "src/"
 		}
 	},
+
+	"autoload-dev": {
+		"psr-4": {
+			"Ichtrojan\\Location\\Test\\": "tests"
+		}
+	},
+	"scripts": {
+		"test": "vendor/bin/phpunit tests"
+	},
 	"extra": {
 		"laravel": {
 			"providers": [
@@ -25,7 +34,14 @@
 		"illuminate/support": "^5.0|^6.0"
 	},
 	"require-dev": {
-		"orchestra/testbench": "^3.0|^4.0"
+		"mockery/mockery": "^1.0",
+		"orchestra/testbench": "3.8.*|4.*",
+		"phpunit/phpunit": "^8.0",
+		"illuminate/contracts": "^5.8.15|^6.0",
+		"illuminate/filesystem": "^5.8.15|^6.0",
+		"illuminate/support": "^5.8.15|^6.0",
+		"illuminate/database": "^5.8.15|^6.0",
+		"phpunit/php-code-coverage": "^7.0@dev"
 	},
 	"description": ""
 }
