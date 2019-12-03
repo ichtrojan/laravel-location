@@ -17,7 +17,7 @@ abstract class TestCase extends BaseTestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->setUpDatabase($this->app);
+        $this->setUpDatabase();
 
         // Note: this also flushes the cache from within the migration
     }
@@ -58,14 +58,16 @@ abstract class TestCase extends BaseTestCase
      *
      * @param \Illuminate\Foundation\Application $app
      */
-    protected function setUpDatabase($app)
+    protected function setUpDatabase()
     {
         $this->createCountriesTable();
         $this->createStatesTable();
         $this->createCitiesTable();
+        $this->addCountryColumnToCitiesTable();
         $this->seedCountriesTable();
         $this->seedStatesTable();
         $this->seedCitiesTable();
+        $this->updateCitiesTable();
     }
 
     protected function createCountriesTable()
@@ -86,6 +88,12 @@ abstract class TestCase extends BaseTestCase
         (new \CreateCitiesTable())->up();
     }
 
+    protected function addCountryColumnToCitiesTable()
+    {
+        include_once __DIR__ . '/../src/database/migrations/2019_12_01_000000_add_country_id_column_to_cities_table.php';
+        (new \AddCountryIdColumnToCitiesTable())->up();
+    }
+
     protected function seedCountriesTable()
     {
         include_once __DIR__ . '/../publishable/database/seeds/CountriesTableSeeder.php';
@@ -102,6 +110,12 @@ abstract class TestCase extends BaseTestCase
     {
         include_once __DIR__ . '/../publishable/database/seeds/CitiesTableSeeder.php';
         (new \CitiesTableSeeder())->run();
+    }
+
+    protected function updateCitiesTable()
+    {
+        include_once __DIR__ . '/../publishable/database/seeds/StateCityCountrySeeder.php';
+        (new \StateCityCountrySeeder())->run();
     }
 
 }

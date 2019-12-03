@@ -24,4 +24,7 @@ Route::group(['prefix' => 'location', 'namespace' => 'Ichtrojan\Location\Http\Co
 
     # Get all Cities in a State using the State ID
     Route::get('cities/{stateId}', 'LocationController@getCitiesByStates');
+
+    # Get all Cities in a Country using the Country ID
+    Route::get('country-cities/{countryId}', 'LocationController@getCitiesByCountry');
 });
