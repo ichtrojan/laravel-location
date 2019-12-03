@@ -21,3 +21,8 @@ Homestead.json
 
 # PHPStorm
 .idea/
+composer.lock
+
+#PHPUnit
+.phpunit.result.cache
+build

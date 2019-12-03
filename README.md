@@ -85,6 +85,9 @@ php artisan db:seed --class=LocationDatabaseSeeder
 |`/location/city/{id}`|return a single city by its ID|
 |`/location/cities/{stateID}`|return all cities in a state using the state ID|
 
+## Test
+`composer test`
+
 ## Contribution
 
 Free for all, if you find an issue with the package or if a group of people somehow created a new country please send in a PR.
