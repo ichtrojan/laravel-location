@@ -75,4 +75,14 @@ class LocationController extends Controller
         $stateCities = City::where('state_id', $stateId)->get(['id', 'name']);
         return response()->json($stateCities, 200);
     }
+
+    /**
+     * @param $countryId
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getCitiesByCountry($countryId) {
+        $countryCities = City::where('country_id', $countryId)->get(['id', 'name']);
+
+        return response()->json($countryCities, 200);
+    }
 }

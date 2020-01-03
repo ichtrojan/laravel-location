@@ -67,7 +67,6 @@ class LocationRouteTest extends TestCase
             'id' => 42
         ];
 
-        $this->assertTrue(count($responseData) == 32);
         $this->assertEquals($firstState, $responseData[0]);
     }
 
@@ -77,7 +76,8 @@ class LocationRouteTest extends TestCase
         $response = $this->get('location/cities');
         $response->assertStatus(200);
         $responseData = json_decode($response->getContent(), true);
-        $this->assertTrue(count($responseData) == 48331);
+
+        $this->assertTrue(count($responseData) == 48017);
     }
 
     /** @test */
@@ -105,7 +105,21 @@ class LocationRouteTest extends TestCase
             'id' => 1
         ];
 
-        $this->assertTrue(count($responseData) == 4);
+        $this->assertEquals($firstCity, $responseData[0]);
+    }
+
+    /** @test */
+    public function it_can_access_cities_by_country()
+    {
+        $response = $this->get('location/country-cities/223');
+        $response->assertStatus(200);
+        $responseData = json_decode($response->getContent(), true);
+
+        $firstCity = [
+            'name' => 'Adiyaman',
+            'id' => 40282
+        ];
+
         $this->assertEquals($firstCity, $responseData[0]);
     }
 
