@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => Config::get('laravel-location.routes.prefix'), 'namespace' => 'Ichtrojan\Location\Http\Controllers', 'middleware' => [Config::get('laravel-location.routes.middleware')]], function () {
+Route::group(['prefix' => Config::get('location.routes.prefix'), 'namespace' => 'Ichtrojan\Location\Http\Controllers', 'middleware' => [Config::get('location.routes.middleware')]], function () {
     # Get all Countries
     Route::get('countries', 'LocationController@getCountries');
 
