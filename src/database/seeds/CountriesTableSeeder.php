@@ -1,6 +1,9 @@
 <?php
 
+namespace Ichtrojan\Location\Seeds;
+
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CountriesTableSeeder extends Seeder
 {
@@ -11,7 +14,7 @@ class CountriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $countriesTable = config('laravel-location.countries_table', 'countries');
+        $countriesTable = config('location.countries_table', 'countries');
         DB::table($countriesTable)->truncate();
 
         $countries = array(

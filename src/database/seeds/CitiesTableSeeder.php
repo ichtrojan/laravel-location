@@ -1,6 +1,9 @@
 <?php
 
+namespace Ichtrojan\Location\Seeds;
+
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CitiesTableSeeder extends Seeder
 {
@@ -11,7 +14,7 @@ class CitiesTableSeeder extends Seeder
      */
     public function run()
     {
-        $citiesTable = config('laravel-location.cities_table', 'cities');
+        $citiesTable = config('location.cities_table', 'cities');
         DB::table($citiesTable)->truncate();
 
         $cities = array(
