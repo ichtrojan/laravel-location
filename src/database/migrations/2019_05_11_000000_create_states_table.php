@@ -24,7 +24,7 @@ class CreateStatesTable extends Migration
 
     protected function getTableName()
     {
-        return Config::get('laravel-location.states_table');
+        return Config::get('location.states_table');
     }
 
     /**

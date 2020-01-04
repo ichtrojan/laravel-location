@@ -24,7 +24,7 @@ class CreateCitiesTable extends Migration
 
     protected function getTableName()
     {
-        return Config::get('laravel-location.cities_table');
+        return Config::get('location.cities_table');
     }
 
     /**
