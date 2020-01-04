@@ -4,11 +4,12 @@ namespace Ichtrojan\Location\Http\Controllers;
 use Ichtrojan\Location\Models\City;
 use Ichtrojan\Location\Models\State;
 use Ichtrojan\Location\Models\Country;
+use Illuminate\Http\JsonResponse;
 
 class LocationController extends Controller
 {
     /**
-     * @return Json
+     * @return JsonResponse
      */
     public function getCountries() {
         $countries = Country::get(['id', 'code', 'name', 'phonecode']);
@@ -17,7 +18,7 @@ class LocationController extends Controller
 
     /**
      * @param $id
-     * @return Json
+     * @return JsonResponse
      */
     public function getCountry($id) {
         $country = Country::where('id', $id)->get(['id', 'code', 'name', 'phonecode']);
@@ -25,7 +26,7 @@ class LocationController extends Controller
     }
 
     /**
-     * @return Json
+     * @return JsonResponse
      */
     public function getStates() {
         $states = State::get(['id', 'name', 'country_id']);
@@ -34,7 +35,7 @@ class LocationController extends Controller
 
     /**
      * @param $id
-     * @return Json
+     * @return JsonResponse
      */
     public function getState($id) {
         $states = State::where('id', $id)->get(['id', 'name', 'country_id']);
@@ -42,7 +43,7 @@ class LocationController extends Controller
     }
 
     /**
-     * @return Json
+     * @return JsonResponse
      */
     public function getCities() {
         $cities = City::get(['id', 'name', 'state_id']);
@@ -51,7 +52,7 @@ class LocationController extends Controller
 
     /**
      * @param $id
-     * @return Json
+     * @return JsonResponse
      */
     public function getCity($id) {
         $country = City::where('id', $id)->get(['id', 'name', 'state_id']);
@@ -60,7 +61,7 @@ class LocationController extends Controller
 
     /**
      * @param $countryId
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function getStatesByCountry($countryId) {
         $countryStates = State::where('country_id', $countryId)->get(['id', 'name']);
@@ -69,7 +70,7 @@ class LocationController extends Controller
 
     /**
      * @param $stateId
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function getCitiesByStates($stateId) {
         $stateCities = City::where('state_id', $stateId)->get(['id', 'name']);
@@ -78,7 +79,7 @@ class LocationController extends Controller
 
     /**
      * @param $countryId
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function getCitiesByCountry($countryId) {
         $countryCities = City::where('country_id', $countryId)->get(['id', 'name']);
