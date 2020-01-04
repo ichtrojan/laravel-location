@@ -11,6 +11,6 @@ class City extends Model
 
     public function getTable()
     {
-        return Config::get('laravel_location.cities_table', $this->table);
+        return Config::get('location.cities_table', $this->table);
     }
 }
