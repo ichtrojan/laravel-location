@@ -15,8 +15,6 @@ class CountriesTableSeeder extends Seeder
     public function run()
     {
         $countriesTable = config('location.countries_table', 'countries');
-        DB::table($countriesTable)->truncate();
-
         $countries = array(
             array('id' => 1,'code' => 'AF' ,'name' => "Afghanistan",'phonecode' => 93),
             array('id' => 2,'code' => 'AL' ,'name' => "Albania",'phonecode' => 355),
