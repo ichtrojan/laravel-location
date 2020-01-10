@@ -2,11 +2,7 @@
 
 namespace Ichtrojan\Location\Seeds;
 
-use CountriesTableSeeder;
 use Illuminate\Database\Seeder;
-use StateCityCountrySeeder;
-use StatesTableSeeder;
-use CitiesTableSeeder;
 
 class LocationDatabaseSeeder extends Seeder
 {
