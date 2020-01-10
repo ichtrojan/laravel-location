@@ -2,6 +2,9 @@
 
 namespace Ichtrojan\Location\Test;
 
+use Ichtrojan\Location\Models\City;
+use Ichtrojan\Location\Models\State;
+
 class LocationRouteTest extends TestCase
 {
 
@@ -121,6 +124,26 @@ class LocationRouteTest extends TestCase
         ];
 
         $this->assertEquals($firstCity, $responseData[0]);
+    }
+
+    /** @test */
+    public function test_all_states_have_country_id()
+    {
+        $count = State::query()
+            ->whereNull('country_id')
+            ->count();
+
+        $this->assertEquals(0, $count);
+    }
+
+    /** @test */
+    public function test_all_cities_have_country_id()
+    {
+        $count = City::query()
+            ->whereNull('country_id')
+            ->count();
+
+        $this->assertEquals(0, $count);
     }
 
 }

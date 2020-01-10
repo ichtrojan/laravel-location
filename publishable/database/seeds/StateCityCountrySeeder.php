@@ -16,12 +16,10 @@ class StateCityCountrySeeder extends Seeder
             ->chunk(100, function ($cities) use ($citiesTable, $statesTable) {
                foreach ($cities as $city) {
                    $state = DB::table($statesTable)->where('id', $city->state_id)->first();
-                   if($state) {
-                       $countryId = $state->country_id;
+
                        DB::table($citiesTable)->where('id', $city->id)->update([
-                           'country_id' => $countryId,
+                           'country_id' => $state->country_id,
                        ]);
-                   }
                }
             });
     }
