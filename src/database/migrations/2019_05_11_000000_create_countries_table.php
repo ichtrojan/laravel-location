@@ -25,7 +25,7 @@ class CreateCountriesTable extends Migration
 
     protected function getTableName()
     {
-        return Config::get('laravel-location.countries_table');
+        return Config::get('location.countries_table');
     }
 
     /**

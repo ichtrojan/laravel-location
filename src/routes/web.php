@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => 'location', 'namespace' => 'Ichtrojan\Location\Http\Controllers', 'middleware' => ['web']], function () {
+Route::group(['prefix' => Config::get('location.routes.prefix'), 'namespace' => 'Ichtrojan\Location\Http\Controllers', 'middleware' => [Config::get('location.routes.middleware')]], function () {
     # Get all Countries
     Route::get('countries', 'LocationController@getCountries');
 

@@ -5,7 +5,7 @@
 ## Introduction 🖖
 This Package offers a simple way to get Countries, Cities and States that you may need for your Application, most especially for dropdown menus.
 
-### Step One - Installation
+### Step One - Install via Composer 🎼
 
 Require the package via composer into your project
 
@@ -15,46 +15,31 @@ composer require ichtrojan/laravel-location
 
 ![composer install](https://res.cloudinary.com/ichtrojan/image/upload/v1557601533/Screenshot_2019-05-11_at_8.04.49_PM_ojixaa.png)
 
-### Step Two - Publishing Configurations
-Laravel location provides you with an easy way of customizing the tables used for storing Countries, States and Cities. To customize this you need to publish the 
-configuration file and edit the table names. To publish the configuration files, run:
+### Step Two - Publish Configurations ⚙️
+Laravel location provides you with an easy way of customizing the tables used for storing Countries, States and Cities. Also, you can customisethe route prefix and middleware. To customize these you need to publish the 
+configuration file. To publish the configuration file, run:
 
-`php artisan vendor:publish --tag=laravel-location-config`
+`php artisan vendor:publish --tag=laravel-location`
 
-You will have `config/laravel-location.php` available for you to edit. Te default content of the configuration is like so:
+You will have `config/location.php` available for you to edit. The default configurations are:
+
 ```php
 <?php
-    return [
-        'countries_table' => 'countries',
-        'cities_table' => 'cities',
-        'states_table' => 'states',
-    ];
-```
-You can go ahead and customize the Table names as you need before running the Migration.
 
-### Step Three - Publishing Seeds
-
-Next, publish the Seeders from the package
-
-```shell
-php artisan vendor:publish --tag=laravel-location-seeds
+return [
+    'countries_table' => 'countries',
+    'cities_table' => 'cities',
+    'states_table' => 'states',
+    'routes' => [
+        'prefix' => 'location',
+        'middleware' => 'web'
+    ]
+];
 ```
 
-or Run
+You can go ahead and customize the `table names`, `route prefix` and `middleware` as you need before running the Migration.
 
-```shell
-php artisan vendor:publish
-```
-
-You will end up with a selection like this
-
-![vendor publish](https://res.cloudinary.com/ichtrojan/image/upload/v1557610923/Screenshot_2019-05-11_at_10.41.45_PM_igxnq3.png)
-
-input the number that matches with `Ichtrojan\Location\LocationServiceProvider` and press enter.
-
-![vendor published](https://res.cloudinary.com/ichtrojan/image/upload/v1557611069/Screenshot_2019-05-11_at_10.44.15_PM_e3os9s.png)
-
-### Step Four - Running Migrations
+### Step Three - Running Migrations
 
 > before you do this make sure your correct Database credentials are set in the `.env` file
 
@@ -67,14 +52,16 @@ php artisan migrate
 Finally, run the Package seeders
 
 ```shell
-php artisan db:seed --class=LocationDatabaseSeeder
+php artisan db:seed --class=Ichtrojan\\Location\\Seeds\\LocationDatabaseSeeder
 ```
-
-![seeds](https://res.cloudinary.com/ichtrojan/image/upload/v1557611591/Screenshot_2019-05-11_at_10.52.04_PM_yrclse.png)
 
 ## Usage 🧨
 
-|Endpoint|Description|
+>**NOTE**<br>
+>The routes below are prefixed with `location` which is the default configuration set in the `config/location.php`
+>file. If mofified, replace the prefixin your route with the correct prefix. 
+
+|Route|Description|
 |:------------- | :----------: |
 |`/location/countries`|return all countries|
 |`/location/country/{id}`|return a single country by its ID|

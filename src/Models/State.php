@@ -11,6 +11,6 @@ class State extends Model
 
     public function getTable()
     {
-        return Config::get('laravel_location.states_table', $this->table);
+        return Config::get('location.states_table', $this->table);
     }
 }

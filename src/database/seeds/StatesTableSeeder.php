@@ -1,6 +1,9 @@
 <?php
 
+namespace Ichtrojan\Location\Seeds;
+
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class StatesTableSeeder extends Seeder
 {
@@ -11,8 +14,7 @@ class StatesTableSeeder extends Seeder
      */
     public function run()
     {
-        $statesTable  = config('laravel-location.states_table', 'states');
-        DB::table($statesTable)->truncate();
+        $statesTable  = config('location.states_table', 'states');
 
         $states = array(
             array('name' => "Andaman and Nicobar Islands",'country_id' => 101),
