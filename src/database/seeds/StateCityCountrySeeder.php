@@ -1,5 +1,4 @@
 <?php
-
 namespace Ichtrojan\Location\Seeds;
 
 use Illuminate\Database\Seeder;
