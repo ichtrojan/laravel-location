@@ -1,7 +1,5 @@
 <?php
 
-namespace Ichtrojan\Location\Seeds;
-
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
