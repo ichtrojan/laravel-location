@@ -146,5 +146,15 @@ class LocationRouteTest extends TestCase
         $this->assertEquals(0, $count);
     }
 
+    /** @test */
+    public function test_all_cities_have_state_id()
+    {
+        $count = City::query()
+            ->whereNull('state_id')
+            ->count();
+
+        $this->assertEquals(0, $count);
+    }
+
 }
 
