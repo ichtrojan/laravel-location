@@ -263,6 +263,7 @@ class CountriesTableSeeder extends Seeder
             array('id' => 246,'code' => 'ZW','name' => "Zimbabwe",'phonecode' => 263),
         );
 
+        DB::table($countriesTable)->truncate();
         DB::table($countriesTable)->insert($countries);
     }
 }

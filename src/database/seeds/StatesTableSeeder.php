@@ -4138,7 +4138,7 @@ class StatesTableSeeder extends Seeder
             array('name' => "Matabeleland South",'country_id' => 246),
             array('name' => "Midlands",'country_id' => 246)
         );
-
+        DB::table($statesTable)->truncate();
         DB::table($statesTable)->insert($states);
     }
 }
