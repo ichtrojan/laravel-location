@@ -1,9 +1,9 @@
 <?php
-
 namespace Ichtrojan\Location\Seeds;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class StatesTableSeeder extends Seeder
 {
@@ -4139,7 +4139,9 @@ class StatesTableSeeder extends Seeder
             array('name' => "Matabeleland South",'country_id' => 246),
             array('name' => "Midlands",'country_id' => 246)
         );
-
+        Schema::disableForeignKeyConstraints();
+        DB::table($statesTable)->truncate();
+        Schema::enableForeignKeyConstraints();
         DB::table($statesTable)->insert($states);
     }
 }

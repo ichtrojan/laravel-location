@@ -3,9 +3,10 @@
 namespace Ichtrojan\Location\Test;
 
 use Ichtrojan\Location\LocationServiceProvider;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
+use Ichtrojan\Location\Seeds\CountriesTableSeeder;
+use Ichtrojan\Location\Seeds\StatesTableSeeder;
+use Ichtrojan\Location\Seeds\CitiesTableSeeder;
+use Ichtrojan\Location\Seeds\StateCityCountrySeeder;
 use Illuminate\Encryption\Encrypter;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Orchestra\Testbench\Concerns\CreatesApplication;
@@ -51,6 +52,12 @@ abstract class TestCase extends BaseTestCase
         $app['config']->set('app.key', 'base64:' . base64_encode(
                 Encrypter::generateKey($app['config']['app.cipher'])
             ));
+
+        $app['config']->set('location.states_table', 'states');
+        $app['config']->set('location.cities_table', 'cities');
+        $app['config']->set('location.countries_table', 'countries');
+        $app['config']->set('location.routes.prefix', 'location');
+        $app['config']->set('location.routes.middleware', 'web');
     }
 
     /**
@@ -96,26 +103,22 @@ abstract class TestCase extends BaseTestCase
 
     protected function seedCountriesTable()
     {
-        include_once __DIR__ . '/../publishable/database/seeds/CountriesTableSeeder.php';
-        (new \CountriesTableSeeder())->run();
+        (new CountriesTableSeeder())->run();
     }
 
     protected function seedStatesTable()
     {
-        include_once __DIR__ . '/../publishable/database/seeds/StatesTableSeeder.php';
-        (new \StatesTableSeeder())->run();
+        (new StatesTableSeeder())->run();
     }
 
     protected function seedCitiesTable()
     {
-        include_once __DIR__ . '/../publishable/database/seeds/CitiesTableSeeder.php';
-        (new \CitiesTableSeeder())->run();
+        (new CitiesTableSeeder())->run();
     }
 
     protected function updateCitiesTable()
     {
-        include_once __DIR__ . '/../publishable/database/seeds/StateCityCountrySeeder.php';
-        (new \StateCityCountrySeeder())->run();
+        (new StateCityCountrySeeder())->run();
     }
 
 }

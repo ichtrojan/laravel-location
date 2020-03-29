@@ -1,9 +1,9 @@
 <?php
-
 namespace Ichtrojan\Location\Seeds;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class CountriesTableSeeder extends Seeder
 {
@@ -264,6 +264,10 @@ class CountriesTableSeeder extends Seeder
             array('id' => 246,'code' => 'ZW','name' => "Zimbabwe",'phonecode' => 263),
         );
 
+        // Fix for issue #29 https://github.com/ichtrojan/laravel-location/issues/29
+        Schema::disableForeignKeyConstraints();
+        DB::table($countriesTable)->truncate();
+        Schema::enableForeignKeyConstraints();
         DB::table($countriesTable)->insert($countries);
     }
 }

@@ -1,9 +1,9 @@
 <?php
-
 namespace Ichtrojan\Location\Seeds;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class CitiesTableSeeder extends Seeder
 {
@@ -15,6 +15,10 @@ class CitiesTableSeeder extends Seeder
     public function run()
     {
         $citiesTable = config('location.cities_table', 'cities');
+        
+         Schema::disableForeignKeyConstraints();
+        DB::table($citiesTable)->truncate();
+         Schema::enableForeignKeyConstraints();
 
         $cities = array(
             array('name' => "Bombuflat",'state_id' => 1),
