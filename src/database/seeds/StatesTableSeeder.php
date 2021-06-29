@@ -413,7 +413,7 @@ class StatesTableSeeder extends Seeder
             array('name' => "Satkhira",'country_id' => 18),
             array('name' => "Shariatpur",'country_id' => 18),
             array('name' => "Sherpur",'country_id' => 18),
-            array('name' => "Silhat",'country_id' => 18),
+            array('name' => "Sylhet",'country_id' => 18),
             array('name' => "Sirajganj",'country_id' => 18),
             array('name' => "Sunamganj",'country_id' => 18),
             array('name' => "Tangayal",'country_id' => 18),
